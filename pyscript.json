@@ -1,0 +1,18 @@
+{
+  "packages": [
+    "numpy",
+    "scipy",
+    "matplotlib"
+  ],
+  "files": {
+    "./browser_runner.py": "./browser_runner.py",
+    "./model/SFD_BMD_v2.py": "./model/SFD_BMD_v2.py",
+    "./model/Mission_module_SI.py": "./model/Mission_module_SI.py",
+    "./model/perform_v3.py": "./model/perform_v3.py",
+    "./model/aircraft_weights.py": "./model/aircraft_weights.py",
+    "./model/sizing_solver.py": "./model/sizing_solver.py",
+    "./model/run_sizing.py": "./model/run_sizing.py"
+  },
+  "interpreter": "0.28.3",
+  "sync_main_only": true
+}

@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Aircraft Design Lab | Narahari Hunsur</title>
+<meta name="description" content="Explore conceptual aircraft sizing, Raymer structural masses, constraints, wing loads and performance. Python calculations run in your browser.">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%230e253a'/%3E%3Cpath d='M6 25V7h3v15h17v3M11 19l5-8 5 5 5-10' fill='none' stroke='%234ce0b3' stroke-width='2'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="./style.css">
+<script type="module" src="./app.js"></script>
+</head>
+<body>
+<header><a class="wordmark" href="./"><span class="mark" aria-hidden="true">A<span> / </span>D</span><span>Aircraft Design Lab<small>Conceptual sizing · a teaching model</small></span></a><div class="byline">Narahari K. Hunsur<span>Python in your browser</span></div></header>
+<main>
+<aside class="inputs">
+<div class="section-label">01 / DEFINE THE AIRCRAFT</div>
+<label for="example">Aircraft example</label>
+<select id="example"><option value="transport">Transport · jet</option><option value="fighter">Fighter · jet</option><option value="general_aviation">General aviation · turboprop</option><option value="transport_turboprop">Transport · turboprop</option></select>
+<p class="help">Choose an example, adjust its inputs, then run the complete sizing workflow.</p>
+<form id="inputs-form">
+<fieldset><legend>Mission</legend><div class="field-grid">
+<label>Range <span>km</span><input id="range" type="number" min="0" max="10000" step="50" required></label>
+<label>Payload <span>kg</span><input id="payload" type="number" min="0" max="100000" step="100" required></label>
+<label>People <span>crew + passengers</span><input id="people" type="number" min="0" max="1000" step="1" required></label>
+<label>Loiter <span>hours</span><input id="loiter" type="number" min="0" max="24" step="0.1" required></label>
+<label>Cruise speed <span>km/h</span><input id="speed" type="number" min="10" max="2500" step="10" required></label>
+<label>Cruise altitude <span>m</span><input id="altitude" type="number" min="0" max="15000" step="500" required></label>
+</div></fieldset>
+<fieldset><legend>Wing & propulsion</legend><div class="field-grid">
+<label>Aspect ratio<input id="ar" type="number" min="1" max="25" step="0.1" required></label>
+<label>Sweep <span>degrees</span><input id="sweep" type="number" min="0" max="75" step="1" required></label>
+<label>Ultimate load factor<input id="nz" type="number" min="1.5" max="15" step="0.01" required></label>
+<label><span id="capacity-label">Total thrust</span> <span id="capacity-unit">kN</span><input id="capacity" type="number" min="0.1" max="100000" step="0.1" required></label>
+</div></fieldset>
+<button class="primary" id="run" type="submit">Run sizing analysis</button>
+<button id="reset" class="quiet" type="button">Reset example</button>
+</form>
+<div class="runtime" role="status" aria-live="polite"><span class="status-icon" aria-hidden="true"></span><div id="runtime-status">Ready to explore. Python loads on your first run.</div></div>
+<p class="help">The first run downloads Python and numerical packages. Keep this tab open; later runs reuse them. Internet access is required.</p>
+<details><summary>Advanced JSON inputs</summary><p class="help">Edit the complete aircraft, mission and constraint definition. Select Apply to use it. Only JSON data is accepted.</p><label for="config-editor" class="sr-only">Complete JSON configuration</label><textarea id="config-editor" spellcheck="false" rows="18"></textarea><div class="action-row"><button id="apply-json" type="button">Apply JSON</button><button id="save-config" type="button">Download JSON</button></div><label class="import-label">Load your JSON <input id="import-config" type="file" accept=".json,application/json"></label></details>
+<a class="guide-link" href="./MODEL_GUIDE.md" download>Model & unit guide</a>
+</aside>
+<section class="workspace" aria-label="Sizing results">
+<div class="workspace-heading"><div><div class="section-label">02 / EXPLORE THE DESIGN</div><h1 id="result-title">Transport jet</h1></div><span id="result-state" class="badge">Reference example</span></div>
+<p class="result-note" id="result-note">Verified desktop reference results. Run the model to calculate in your browser.</p>
+<div class="metrics" id="metrics"><article><span>Gross mass</span><strong id="mass">—</strong><small>kg</small></article><article><span>Wing area</span><strong id="area">—</strong><small>m²</small></article><article><span>Wing loading</span><strong id="ws">—</strong><small>N/m²</small></article><article><span>Mission fuel</span><strong id="fuel">—</strong><small>kg, including reserve</small></article></div>
+<div class="design-status" id="design-status"></div>
+<nav class="tabs" role="tablist" aria-label="Result views"><button role="tab" aria-controls="panel-constraints" id="tab-constraints" aria-selected="true" data-tab="constraints">Constraints</button><button role="tab" aria-controls="panel-weights" id="tab-weights" aria-selected="false" data-tab="weights" tabindex="-1">Weights</button><button role="tab" aria-controls="panel-wing" id="tab-wing" aria-selected="false" data-tab="wing" tabindex="-1">Wing loads</button><button role="tab" aria-controls="panel-performance" id="tab-performance" aria-selected="false" data-tab="performance" tabindex="-1">Performance</button></nav>
+<section class="result-panel" id="panel-constraints" role="tabpanel" aria-labelledby="tab-constraints"><div class="panel-head"><h2>Constraint diagram</h2><p>Required propulsion versus wing loading</p></div><img id="plot-constraints" alt="Aircraft sizing constraint diagram"><div class="values" id="engine-values"></div></section>
+<section class="result-panel" id="panel-weights" role="tabpanel" aria-labelledby="tab-weights" hidden><div class="panel-head"><h2>Component mass build-up</h2><p>Raymer structural correlations · kg</p></div><div id="weight-bars" class="weight-bars"></div><table><caption class="sr-only">Component mass breakdown</caption><thead><tr><th>Component</th><th>Mass (kg)</th><th>Gross mass (%)</th></tr></thead><tbody id="weight-table"></tbody></table><p class="help">Systems and accessories use an aggregate allowance. Fuel and useful load are shown separately from empty mass.</p></section>
+<section class="result-panel" id="panel-wing" role="tabpanel" aria-labelledby="tab-wing" hidden><div class="panel-head"><h2>Wing shear & bending</h2><p>Schrenk lift distribution · ultimate aerodynamic loads</p></div><div class="values" id="wing-values"></div><img id="plot-wing" alt="Wing lift, shear force and bending moment distributions"><p class="help">Loads omit wing, fuel and engine inertia relief. Ultimate load factor is applied once.</p></section>
+<section class="result-panel" id="panel-performance" role="tabpanel" aria-labelledby="tab-performance" hidden><div class="panel-head"><h2>Performance</h2><p>Available engine versus required engine</p></div><div class="values" id="performance-values"></div><img id="plot-performance" alt="Climb rate and level speed against altitude"><img id="plot-range" alt="Cruise range against true airspeed"><p class="help">Range uses the configured drag polar and allocated cruise fuel. Mission L/D is an independent sizing assumption. Speed limits are capped by the input maximum Mach number.</p></section>
+<div class="downloads"><button id="download-results" disabled>Download all results (.zip)</button><button id="download-summary">Download summary (.json)</button><a href="./desktop_model.zip" download>Desktop Python model</a></div>
+<details class="assumptions"><summary>Assumptions & model notes</summary><ul id="warnings"></ul><p>Generic teaching examples. These calculations have not been calibrated against measured aircraft data. Fixed fuselage dimensions do not resize with payload or mass.</p></details>
+<details class="run-log"><summary>Calculation log</summary><pre id="log">Run an analysis to see the calculation log here.</pre></details>
+</section>
+</main><footer>Aircraft Design Lab <span>Fighter · Transport · General aviation</span><span>PyScript · NumPy · SciPy · Matplotlib</span></footer>
+<div id="python-terminal" hidden></div>
+<noscript>This calculator needs JavaScript enabled in a modern browser.</noscript>
+</body></html>
