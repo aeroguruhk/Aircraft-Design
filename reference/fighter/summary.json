@@ -1,0 +1,110 @@
+{
+  "title": "Illustrative fighter jet",
+  "aircraft_type": "fighter",
+  "propulsion_type": "jet",
+  "initial_statistical_mass_kg": 9308.777800604938,
+  "gross_mass_kg": 7822.463678000994,
+  "fuel_fraction": 0.16832494365055717,
+  "fuel_mass_kg": 1316.7157578080476,
+  "useful_mass_kg": 2600,
+  "component_masses_kg": {
+    "W_wing": 407.87275825032765,
+    "W_ht": 42.46881361242441,
+    "W_vt": 19.016433766633703,
+    "W_fus": 930.8200379413013,
+    "W_mlg": 101.58217609893508,
+    "W_nlg": 40.949250085651144,
+    "W_engine": 1189.6688987375246,
+    "W_systems": 1173.3695517001493
+  },
+  "mass_closure_residual_kg": -9.094947017729282e-13,
+  "wing_loading_pa": 4100.0,
+  "ratio_units": "T/W",
+  "required_engine_ratio": 0.8659999135568948,
+  "available_engine_ratio": 0.9121903580048155,
+  "available_engine_constraint_feasible": true,
+  "engine_weight_basis": "installed",
+  "geometry": {
+    "area_m2": 18.71667528809506,
+    "span_m": 6.118280034142775,
+    "mac_m": 3.2955344674074944,
+    "ht_area_m2": 2.7413977123196163,
+    "vt_area_m2": 0.8906633611608873
+  },
+  "ultimate_load_factor": 9.0,
+  "root_shear_N": 345322.65906535374,
+  "root_bending_N_m": 445874.9586293543,
+  "performance": {
+    "required": {
+      "sea_level": {
+        "altitude_m": 0.0,
+        "stall_m_s": 66.80224809359157,
+        "max_speed_m_s": 403.0798390292345,
+        "max_roc_m_s": 196.5895384156564,
+        "speed_at_max_roc_m_s": 340.23605847640675,
+        "speed_cap_limited": false
+      },
+      "service_ceiling_m": null,
+      "ground_roll": {
+        "takeoff_ground_roll_m": 470.0395694495973,
+        "landing_ground_roll_m": 370.2138067779653
+      },
+      "cruise_roc_m_s": 93.47407278607301,
+      "cruise_cl": 0.28638543520192067,
+      "cruise_ld_from_polar": 8.861843720941156,
+      "cruise_level_feasible": true,
+      "cruise_range": {
+        "cruise_start_mass_kg": 7473.97292114605,
+        "cruise_end_mass_kg": 6825.5207257329,
+        "range_at_prescribed_speed_km": 858.6533966267222,
+        "prescribed_speed_feasible": true,
+        "maximum_cruise_range_km": 942.9903367685436,
+        "range_optimum_speed_m_s": 263.64775586465623,
+        "maximum_cruise_endurance_hr": 1.1486351057994755,
+        "endurance_optimum_speed_m_s": 200.27274260572776
+      }
+    },
+    "available": {
+      "sea_level": {
+        "altitude_m": 0.0,
+        "stall_m_s": 66.80224809359157,
+        "max_speed_m_s": 414.09278838945716,
+        "max_roc_m_s": 212.3053033269107,
+        "speed_at_max_roc_m_s": 340.23605847640675,
+        "speed_cap_limited": false
+      },
+      "service_ceiling_m": null,
+      "ground_roll": {
+        "takeoff_ground_roll_m": 437.1945889986827,
+        "landing_ground_roll_m": 370.2138067779653
+      },
+      "cruise_roc_m_s": 99.71368244387199,
+      "cruise_cl": 0.28638543520192067,
+      "cruise_ld_from_polar": 8.861843720941156,
+      "cruise_level_feasible": true,
+      "cruise_range": {
+        "cruise_start_mass_kg": 7473.97292114605,
+        "cruise_end_mass_kg": 6825.5207257329,
+        "range_at_prescribed_speed_km": 858.6533966267222,
+        "prescribed_speed_feasible": true,
+        "maximum_cruise_range_km": 942.9903367685436,
+        "range_optimum_speed_m_s": 263.64775586465623,
+        "maximum_cruise_endurance_hr": 1.1486351057994755,
+        "endurance_optimum_speed_m_s": 200.27274260572776
+      }
+    },
+    "fuel_allocation": {
+      "allocated_cruise_range_km": 799.9999999999995,
+      "allocated_cruise_endurance_hr": 1.0666666666666662,
+      "note": "Fuel allocation check at prescribed L/D; aerodynamic/engine feasibility reported separately."
+    },
+    "glide_ld_max": 8.862269254527579
+  },
+  "warnings": [
+    "Systems/nacelles/propellers/accessories use an aggregate systems allowance, not detailed Raymer equations.",
+    "Schrenk loads are aerodynamic loads only; fuel, wing and engine inertia relief are omitted.",
+    "Fixed fuselage dimensions do not resize with mass; volume and packaging closure are not checked.",
+    "Takeoff is an approximate ground-run constraint; landing case is approach/go-around, not a landing-distance constraint.",
+    "Fighter landing-gear equations retained from original code; verify against your source page."
+  ]
+}

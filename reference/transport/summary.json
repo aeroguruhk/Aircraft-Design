@@ -1,0 +1,109 @@
+{
+  "title": "Illustrative twin jet cargo transport",
+  "aircraft_type": "transport",
+  "propulsion_type": "jet",
+  "initial_statistical_mass_kg": 46303.868490466426,
+  "gross_mass_kg": 39462.76112417315,
+  "fuel_fraction": 0.20407529857239148,
+  "fuel_mass_kg": 8053.374758906599,
+  "useful_mass_kg": 12200,
+  "component_masses_kg": {
+    "W_wing": 3156.8298696854326,
+    "W_ht": 273.81577293478676,
+    "W_vt": 343.1635220414549,
+    "W_fus": 4595.10692782582,
+    "W_mlg": 1256.3494158926635,
+    "W_nlg": 255.9885114416737,
+    "W_engine": 2224.835343093552,
+    "W_systems": 7103.297002351166
+  },
+  "mass_closure_residual_kg": 1.8189894035458565e-12,
+  "wing_loading_pa": 3950.0,
+  "ratio_units": "T/W",
+  "required_engine_ratio": 0.18790349983010535,
+  "available_engine_ratio": 0.30997364486611234,
+  "available_engine_constraint_feasible": true,
+  "engine_weight_basis": "installed",
+  "geometry": {
+    "area_m2": 98.00751560206042,
+    "span_m": 29.699623573684292,
+    "mac_m": 3.6188890438239025,
+    "ht_area_m2": 18.84228598506201,
+    "vt_area_m2": 14.553931603865925
+  },
+  "ultimate_load_factor": 3.75,
+  "root_shear_N": 725868.16242776,
+  "root_bending_N_m": 4498355.519356805,
+  "performance": {
+    "required": {
+      "sea_level": {
+        "altitude_m": 0.0,
+        "stall_m_s": 65.56886974016867,
+        "max_speed_m_s": 231.42743617185684,
+        "max_roc_m_s": 14.959287885869355,
+        "speed_at_max_roc_m_s": 140.56402302316897,
+        "speed_cap_limited": false
+      },
+      "service_ceiling_m": 13055.263838523377,
+      "ground_roll": {
+        "takeoff_ground_roll_m": 2087.1893450526586,
+        "landing_ground_roll_m": 962.1016364318118
+      },
+      "cruise_roc_m_s": 4.125933562606092,
+      "cruise_cl": 0.36085592255110344,
+      "cruise_ld_from_polar": 13.066704796254006,
+      "cruise_level_feasible": true,
+      "cruise_range": {
+        "cruise_start_mass_kg": 37704.695116091236,
+        "cruise_end_mass_kg": 32602.38271464082,
+        "range_at_prescribed_speed_km": 2500.724408518872,
+        "prescribed_speed_feasible": true,
+        "maximum_cruise_range_km": 2554.7761085260486,
+        "range_optimum_speed_m_s": 191.10239182991194,
+        "maximum_cruise_endurance_hr": 4.287242905947258,
+        "endurance_optimum_speed_m_s": 145.01496079570907
+      }
+    },
+    "available": {
+      "sea_level": {
+        "altitude_m": 0.0,
+        "stall_m_s": 65.56886974016867,
+        "max_speed_m_s": 289.2484438354855,
+        "max_roc_m_s": 34.377510378155385,
+        "speed_at_max_roc_m_s": 176.56915880331587,
+        "speed_cap_limited": true
+      },
+      "service_ceiling_m": null,
+      "ground_roll": {
+        "takeoff_ground_roll_m": 1005.1084398229032,
+        "landing_ground_roll_m": 962.1016364318118
+      },
+      "cruise_roc_m_s": 17.578422244508328,
+      "cruise_cl": 0.36085592255110344,
+      "cruise_ld_from_polar": 13.066704796254006,
+      "cruise_level_feasible": true,
+      "cruise_range": {
+        "cruise_start_mass_kg": 37704.695116091236,
+        "cruise_end_mass_kg": 32602.38271464082,
+        "range_at_prescribed_speed_km": 2500.724408518872,
+        "prescribed_speed_feasible": true,
+        "maximum_cruise_range_km": 2554.7761085260486,
+        "range_optimum_speed_m_s": 191.10239182991194,
+        "maximum_cruise_endurance_hr": 4.287242905947258,
+        "endurance_optimum_speed_m_s": 145.01496079570907
+      }
+    },
+    "fuel_allocation": {
+      "allocated_cruise_range_km": 2499.9999999999977,
+      "allocated_cruise_endurance_hr": 3.2051282051282017,
+      "note": "Fuel allocation check at prescribed L/D; aerodynamic/engine feasibility reported separately."
+    },
+    "glide_ld_max": 16.231616798807377
+  },
+  "warnings": [
+    "Systems/nacelles/propellers/accessories use an aggregate systems allowance, not detailed Raymer equations.",
+    "Schrenk loads are aerodynamic loads only; fuel, wing and engine inertia relief are omitted.",
+    "Fixed fuselage dimensions do not resize with mass; volume and packaging closure are not checked.",
+    "Takeoff is an approximate ground-run constraint; landing case is approach/go-around, not a landing-distance constraint."
+  ]
+}

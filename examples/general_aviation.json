@@ -1,0 +1,122 @@
+{
+  "title": "Illustrative unpressurized GA turboprop",
+  "aircraft": {
+    "mass_kg": 3000,
+    "aspect_ratio": 8,
+    "efficiency": 0.8,
+    "cd0_sub": 0.025,
+    "cd0_sup": 0.06,
+    "k_sup": 0.4,
+    "cl_max_to": 1.9,
+    "s_g_m": 900.0,
+    "beta_acc": 0.8,
+    "maximum_thrust_N": 100000.0,
+    "propulsion_type": "turboprop",
+    "maximum_power_kw": 400,
+    "eta_prop": 0.82,
+    "sweep": 0,
+    "taper": 0.5,
+    "tc_root": 0.15,
+    "V_h": 0.65,
+    "V_v": 0.06,
+    "L_t_m": 4,
+    "AR_ht": 4,
+    "AR_vt": 1.7,
+    "sweep_vt": 20,
+    "H_t_m": 0.0,
+    "H_v_m": 0.0,
+    "S_r_m2": 0.0,
+    "L_fuse_m": 9,
+    "D_fuse_m": 1.6,
+    "W_fuse_m": 1.5,
+    "F_w_m": 1.5,
+    "N_z": 5.7,
+    "K_dw": 1.0,
+    "K_vs": 1.0,
+    "K_rht": 1.0,
+    "K_dwf": 1.0,
+    "landing_weight_fraction": 0.95,
+    "N_l": 3.0,
+    "L_m_in": 35,
+    "L_n_in": 30,
+    "K_cb": 1.0,
+    "K_tpg": 1.0,
+    "N_nw": 1,
+    "aircraft_type": "general_aviation",
+    "systems_fraction": 0.16,
+    "engine_tw": 6.0,
+    "engine_pw": 2.5,
+    "M_max": 0.45,
+    "cl_max_clean": 1.5,
+    "cl_max_landing": 2.3,
+    "cruise_altitude_m": 3000,
+    "engine_weight_basis": "installed",
+    "sweep_ht": 0,
+    "tc_ht": 0.12,
+    "tc_vt": 0.12,
+    "taper_ht": 0.4,
+    "taper_vt": 0.4,
+    "S_fuse_wet_m2": 42,
+    "W_press_lb": 0
+  },
+  "mission": {
+    "Pax": 6,
+    "Pax_mass": 90,
+    "payload": 200,
+    "Range": 900,
+    "Endurance": 0.5,
+    "velocity": 300,
+    "LBYD": 11,
+    "bsfc_cruise": 0.3,
+    "bsfc_loiter": 0.32,
+    "loiter_velocity_kmh": 180,
+    "empty_fraction_reference": 0.6,
+    "reference_mass_kg": 3000,
+    "empty_fraction_exponent": -0.08
+  },
+  "cases": [
+    {
+      "type": "LevelFlightCase",
+      "name": "Cruise",
+      "altitude_m": 3000,
+      "mach": 0.25,
+      "beta": 0.95
+    },
+    {
+      "type": "ClimbCase",
+      "name": "Initial climb",
+      "altitude_m": 0,
+      "roc_m_s": 6,
+      "beta": 1
+    },
+    {
+      "type": "ServiceCeilingCase",
+      "name": "Service ceiling",
+      "altitude_m": 6000,
+      "roc_m_s": 0.5,
+      "beta": 0.9
+    },
+    {
+      "type": "TakeoffCase",
+      "name": "Takeoff ground run",
+      "altitude_m": 0,
+      "s_g_m": 700,
+      "beta": 1
+    },
+    {
+      "type": "LandingCase",
+      "name": "Landing go-around",
+      "altitude_m": 0,
+      "cl_max_landing": 2.3,
+      "beta": 0.85
+    }
+  ],
+  "ws_range": {
+    "start_pa": 300,
+    "end_pa": 2200,
+    "step_pa": 25
+  },
+  "design": {
+    "stall_speed_limit_m_s": 40
+  }
+}

@@ -1,0 +1,142 @@
+{
+  "title": "Illustrative fighter jet",
+  "aircraft": {
+    "mass_kg": 10000.0,
+    "aspect_ratio": 2.0,
+    "efficiency": 0.8,
+    "cd0_sub": 0.016,
+    "cd0_sup": 0.035,
+    "k_sup": 0.4,
+    "cl_max_to": 1.7,
+    "s_g_m": 900.0,
+    "beta_acc": 0.8,
+    "maximum_thrust_N": 70000,
+    "propulsion_type": "jet",
+    "maximum_power_kw": null,
+    "eta_prop": 0.8,
+    "sweep": 29.0,
+    "taper": 0.35,
+    "tc_root": 0.04,
+    "V_h": 0.4,
+    "V_v": 0.07,
+    "L_t_m": 9.0,
+    "AR_ht": 3.0,
+    "AR_vt": 1.5,
+    "sweep_vt": 35.0,
+    "H_t_m": 0.0,
+    "H_v_m": 0.0,
+    "S_r_m2": 0.0,
+    "L_fuse_m": 14.0,
+    "D_fuse_m": 1.5,
+    "W_fuse_m": 1.5,
+    "F_w_m": 1.2,
+    "N_z": 9.0,
+    "K_dw": 1.0,
+    "K_vs": 1.0,
+    "K_rht": 1.0,
+    "K_dwf": 1.0,
+    "landing_weight_fraction": 0.78,
+    "N_l": 3.0,
+    "L_m_in": 30.0,
+    "L_n_in": 30.0,
+    "K_cb": 1.0,
+    "K_tpg": 1.0,
+    "N_nw": 2.0,
+    "aircraft_type": "fighter",
+    "systems_fraction": 0.15,
+    "engine_tw": 6.0,
+    "engine_pw": 3.0,
+    "M_max": 1.5,
+    "cl_max_clean": 1.5,
+    "cl_max_landing": 2.5,
+    "cruise_altitude_m": 6000,
+    "engine_weight_basis": "installed",
+    "sweep_ht": 25,
+    "tc_ht": 0.08,
+    "tc_vt": 0.08,
+    "taper_ht": 0.4,
+    "taper_vt": 0.4
+  },
+  "mission": {
+    "Pax": 1,
+    "Pax_mass": 100,
+    "payload": 2500,
+    "Range": 800,
+    "Endurance": 0.5,
+    "velocity": 750,
+    "LBYD": 9.5,
+    "sfc_cruise": 0.7,
+    "sfc_loiter": 0.6,
+    "empty_fraction_reference": 0.55,
+    "reference_mass_kg": 10000,
+    "empty_fraction_exponent": -0.06
+  },
+  "cases": [
+    {
+      "type": "LevelFlightCase",
+      "name": "Subsonic cruise",
+      "altitude_m": 6000,
+      "mach": 0.65,
+      "beta": 0.9
+    },
+    {
+      "type": "LevelFlightCase",
+      "name": "Supersonic dash",
+      "altitude_m": 10000,
+      "mach": 1.5,
+      "beta": 0.8
+    },
+    {
+      "type": "SustainedTurnCase",
+      "name": "Sustained 4 g turn",
+      "altitude_m": 3000,
+      "mach": 0.7,
+      "load_factor": 4,
+      "beta": 0.85
+    },
+    {
+      "type": "ClimbCase",
+      "name": "Initial climb",
+      "altitude_m": 0,
+      "roc_m_s": 80,
+      "beta": 1
+    },
+    {
+      "type": "TakeoffCase",
+      "name": "Takeoff ground run",
+      "altitude_m": 0,
+      "s_g_m": 900,
+      "beta": 1
+    },
+    {
+      "type": "LandingCase",
+      "name": "Landing go-around",
+      "altitude_m": 0,
+      "cl_max_landing": 2.5,
+      "beta": 0.85
+    },
+    {
+      "type": "AccelerationCase",
+      "name": "Dash acceleration",
+      "altitude_m": 6000,
+      "m1": 0.8,
+      "m2": 1.2,
+      "dt_s": 45,
+      "beta": 0.85
+    },
+    {
+      "type": "TurnRateCase",
+      "name": "Sustained turn rate",
+      "altitude_m": 3000,
+      "mach": 0.65,
+      "turn_rate_deg_s": 12,
+      "cl_max": 1.5,
+      "beta": 0.85
+    }
+  ],
+  "ws_range": {
+    "start_pa": 1500,
+    "end_pa": 6500,
+    "step_pa": 50
+  }
+}
